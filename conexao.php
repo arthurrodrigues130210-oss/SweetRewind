@@ -4,7 +4,7 @@ $conexao = mysqli_connect(
     "localhost",
     "root",
     "",
-    "SweetRewind",
+    "sweet_rewind",
     3307
 );
 
@@ -13,4 +13,5 @@ if(!$conexao){
 }
 
 mysqli_set_charset($conexao,"utf8mb4");
+
 ?>
