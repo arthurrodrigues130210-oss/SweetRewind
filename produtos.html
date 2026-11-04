@@ -1,11 +1,799 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Produtos | SweetRewind</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --cream: #fffaf3;
+            --pink: #f5dfe3;
+            --pink-light: #fbedef;
+            --rose: #bd7b87;
+            --rose-dark: #985765;
+            --brown: #493832;
+            --muted: #907d75;
+            --line: #eadbd4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--cream);
+            color: var(--brown);
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        /* HEADER */
+        .header {
+            background: var(--cream);
+            border-bottom: 1px solid var(--line);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1250px;
+            margin: auto;
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 27px;
+            font-weight: 700;
+            color: var(--rose-dark);
+            white-space: nowrap;
+        }
+
+        .logo span {
+            display: block;
+            text-align: center;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 8px;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        .navigation {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .navigation a {
+            font-size: 12px;
+            color: var(--muted);
+            transition: .3s;
+        }
+
+        .navigation a:hover,
+        .navigation a.active {
+            color: var(--rose-dark);
+        }
+
+        .profile-link {
+            width: 39px;
+            height: 39px;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--rose-dark);
+            font-size: 23px;
+        }
+
+        /* INTRODUÇÃO */
+        .intro {
+            text-align: center;
+            padding: 75px 20px 45px;
+        }
+
+        .eyebrow {
+            color: var(--rose-dark);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .intro h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(38px, 6vw, 65px);
+            font-weight: 500;
+            margin: 14px 0;
+        }
+
+        .intro p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* CAPA */
+        .cover {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            min-height: 450px;
+            overflow: hidden;
+            border-radius: 24px;
+            background: var(--pink-light);
+        }
+
+        .cover-image {
+            min-height: 450px;
+            overflow: hidden;
+        }
+
+        .cover-image img {
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .cover-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .cover-content {
+            padding: 55px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .cover-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(35px, 4vw, 53px);
+            font-weight: 500;
+            line-height: 1.15;
+            margin: 20px 0;
+        }
+
+        .cover-content p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .cover-button {
+            background: var(--rose-dark);
+            color: white;
+            padding: 14px 24px;
+            font-size: 12px;
+            transition: .3s;
+        }
+
+        .cover-button:hover {
+            background: var(--brown);
+        }
+
+        /* CATEGORIAS */
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 65px auto 55px;
+        }
+
+        .category-button {
+            border: 1px solid var(--line);
+            background: transparent;
+            color: var(--muted);
+            padding: 11px 23px;
+            border-radius: 30px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .category-button:hover,
+        .category-button.active {
+            background: var(--rose-dark);
+            color: white;
+            border-color: var(--rose-dark);
+        }
+
+        /* PRODUTOS */
+        .products-section {
+            padding-bottom: 90px;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .section-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        .section-heading p {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 35px 20px;
+        }
+
+        .product-card {
+            min-width: 0;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 440px;
+            overflow: hidden;
+            border-radius: 25px;
+            background: var(--pink);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.04);
+        }
+
+        .product-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 15px 5px;
+            gap: 15px;
+        }
+
+        .product-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+        .product-info p {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .product-category {
+            color: var(--rose-dark);
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            padding-top: 7px;
+        }
+
+        .product-card[hidden] {
+            display: none;
+        }
+
+        .empty-message {
+            display: none;
+            text-align: center;
+            color: var(--muted);
+            padding: 40px;
+            grid-column: 1 / -1;
+        }
+
+        /* FRASE FINAL */
+        .closing {
+            background: var(--pink-light);
+            text-align: center;
+            padding: 75px 20px;
+        }
+
+        .closing h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(30px, 5vw, 45px);
+            font-weight: 500;
+            margin: 15px 0;
+        }
+
+        .closing p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--pink);
+            padding: 45px 5% 20px;
+        }
+
+        .footer-content {
+            max-width: 1150px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 35px;
+        }
+
+        .footer h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            margin-bottom: 13px;
+        }
+
+        .footer h4 {
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+        .footer p,
+        .footer a {
+            color: #806a64;
+            font-size: 12px;
+            line-height: 2;
+            display: block;
+        }
+
+        .footer a:hover {
+            color: var(--rose-dark);
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(152, 87, 101, .2);
+            margin: 30px auto 0;
+            padding-top: 18px;
+            color: #806a64;
+            font-size: 10px;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 800px) {
+            .header-content {
+                flex-wrap: wrap;
+            }
+
+            .navigation {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 18px;
+            }
+
+            .cover {
+                grid-template-columns: 1fr;
+            }
+
+            .cover-image {
+                height: 350px;
+                min-height: 350px;
+            }
+
+            .cover-content {
+                padding: 40px;
+            }
+
+            .product-image {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 390px;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .intro {
+                padding-top: 50px;
+            }
+
+            .cover-content {
+                padding: 30px;
+            }
+
+            .categories {
+                margin: 45px auto;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                SweetRewind
+                <span>KISSES, CRUMBS & MEMORIES</span>
+            </a>
+        <div class="collapse" id="navbarToggleExternalContent">
+
+            <div class="p-4" style="background-color: #f7f5f1;">
+
+                <h5 class="h4" style="color: #ff8eb4;">
+                    Sweet Rewind
+                </h5>
+
+                <span style="color: #f7a0b8;">
+                    Um pedacinho de nostalgia, uma fatia de felicidade 𖹭
+                </span>
+
+
+                <br><br>
+
+                <div class="tab-content" id="v-pills-tabContent" style="color: #f9bbd0;">
+
+
+
+                    <div class="d-flex align-items-start">
+
+
+                        <div class="nav flex-column nav-pills me-3 align-items-start" id="v-pills-tab" role="tablist"
+                            aria-orientation="vertical" style="min-width: 200px;">
+
+                            <a href="index.html">
+                                <button class="nav-link active w-100 text-start" id="v-pills-home-tab"
+                                    data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab"
+                                    aria-controls="v-pills-home" aria-selected="true"
+                                    style="background-color: #f9bbd0; color: #f7f5f1;">
+                                    Início
+                                </button></a>
+                            <br>
+
+                            <a href="cadastro.php">
+                                <button class="nav-link active w-100 text-start" id="v-pills-home-tab"
+                                    data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab"
+                                    aria-controls="v-pills-home" aria-selected="true"
+                                    style="background-color: #f9bbd0; color: #f7f5f1;">
+                                    Perfil
+                                </button></a>
+                            <br>
+                             <a href="produtos.html">
+                                
+                            <button class="nav-link active w-100 text-start" id="v-pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                                aria-selected="true" style="background-color: #f9bbd0; color: #f7f5f1;">
+                                Produtos
+                            
+                            </button> <br>
+                            </a>
+
+
+                            <button class="nav-link active w-100 text-start" id="v-pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                                aria-selected="true" style="background-color: #f9bbd0; color: #f7f5f1;">
+                                Pedidos
+                            </button> <br>
+
+                            <button class="nav-link active w-100 text-start" id="v-pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                                aria-selected="true" style="background-color: #f9bbd0; color: #f7f5f1;">
+                                Sobre Nós
+                            </button> <br>
+
+                            <a href="login_admin.php">
+                            <button class="nav-link active w-100 text-start" id="v-pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                                aria-selected="true" style="background-color: #f9bbd0; color: #f7f5f1;">
+                                Configurações
+                            </button></a>
+                            <br>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                            aria-labelledby="v-pills-profile-tab" tabindex="0">
+                            Conheça nossos produtos doces.
+                        </div>
+
+                        <div class="tab-pane fade" id="v-pills-disabled" role="tabpanel"
+                            aria-labelledby="v-pills-disabled-tab" tabindex="0">
+                            Seus pedidos aparecerão aqui.
+                        </div>
+
+                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                            aria-labelledby="v-pills-messages-tab" tabindex="0">
+                            Consulte seu perfil.
+                        </div>
+
+                        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
+                            aria-labelledby="v-pills-settings-tab" tabindex="0">
+                            Personalize suas preferências.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <nav class="navbar" style="background-color: #f7f5f1;">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                    aria-expanded="false" aria-label="Abrir menu" style="border-color: #ff8eb4;">
+
+                    <span class="navbar-toggler-icon"
+                        style="filter: brightness(0) saturate(100%) invert(9%) sepia(98%) saturate(5094%) hue-rotate(4deg) brightness(83%) contrast(113%);">
+                    </span>
+
+                </button>
+            </div>
+        </nav>
+            <a href="perfil.html" class="profile-link" aria-label="Meu perfil">♡</a>
+        </div>
+    </header>
+    <main>
+        <section class="intro">
+            <span class="eyebrow">A LITTLE BIT OF EVERYTHING</span>
+            <h1>Pick your crush ♡</h1>
+            <p>Encontre algo tão bonito quanto delicioso.</p>
+        </section>
+        <section class="container cover">
+            <div class="cover-image">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1400&q=85"
+                    alt="Bolo artesanal">
+            </div>
+            <div class="cover-content">
+                <span class="eyebrow">SWEETNESS NEVER GOES OUT OF STYLE</span>
+                <h2>Made to make you fall in love.</h2>
+                <p>
+                    Doces preparados para transformar pequenos momentos
+                    em lembranças especiais. Escolha seu favorito e
+                    aproveite cada pedacinho.
+                </p>
+                <a href="#colecao" class="cover-button">
+                    Explore our collection ♡
+                </a>
+            </div>
+        </section>
+        <section class="container">
+            <div class="categories">
+                <button class="category-button active" data-category="Todos">Todos</button>
+                <button class="category-button" data-category="Bolos">Bolos & tortas</button>
+                <button class="category-button" data-category="Cookies">Cookies</button>
+                <button class="category-button" data-category="Doces">Doces</button>
+                <button class="category-button" data-category="Bebidas">Bebidas</button>
+            </div>
+        </section>
+        <section class="container products-section" id="colecao">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">OUR SWEET COLLECTION</span>
+                    <h2>Sweet little things.</h2>
+                </div>
+                <p>Made with love, always.</p>
+            </div>
+            <div class="products-grid" id="productsGrid">
+                <article class="product-card" data-category="Bolos">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85"
+                            alt="Velvet Cake">
+                    </div>
+                    <div class="product-info">
+                        <div>
+                            <h3>Velvet Cake</h3>
+                            <p>Bolo macio com camadas de creme e morango.</p>
+                        </div>
+                        <span class="product-category">Bolos</span>
+                    </div>
+                </article>
+                <article class="product-card" data-category="Doces">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=900&q=85"
+                            alt="Choco Croissant">
+                    </div>
+                    <div class="product-info">
+                        <div>
+                            <h3>Choco Croissant</h3>
+                            <p>Croissant folhado com recheio de chocolate.</p>
+                        </div>
+                        <span class="product-category">Doces</span>
+                    </div>
+                </article>
+                <article class="product-card" data-category="Cookies">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&q=85"
+                            alt="Cookie Crush">
+                    </div>
+                    <div class="product-info">
+                        <div>
+                            <h3>Cookie Crush</h3>
+                            <p>Cookie artesanal com gotas de chocolate.</p>
+                        </div>
+                        <span class="product-category">Cookies</span>
+                    </div>
+                </article>
+                <article class="product-card" data-category="Bolos">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=85"
+                            alt="Berry Love">
+                    </div>
+                    <div class="product-info">
+                        <div>
+                            <h3>Berry Love</h3>
+                            <p>Sobremesa delicada com frutas vermelhas.</p>
+                        </div>
+                        <span class="product-category">Bolos</span>
+                    </div>
+                </article>
+                <article class="product-card" data-category="Doces">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=900&q=85"
+                            alt="Sweet Pancakes">
+                    </div>
+                    <div class="product-info">
+                        <div>
+                            <h3>Sweet Pancakes</h3>
+                            <p>Panquecas fofinhas com calda especial.</p>
+                        </div>
+                        <span class="product-category">Doces</span>
+                    </div>
+                </article>
+                <article class="product-card" data-category="Bolos">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=900&q=85"
+                            alt="Strawberry Cake">
+                    </div>
+                    <div class="product-info">
+                        <div>
+                            <h3>Strawberry Cake</h3>
+                            <p>Bolo com morangos frescos e chantilly.</p>
+                        </div>
+                        <span class="product-category">Bolos</span>
+                    </div>
+                </article>
+                <article class="product-card" data-category="Cookies">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&q=85"
+                            alt="Chocolate Cookies">
+                    </div>
+                    <div class="product-info">
+                        <div>
+                            <h3>Chocolate Cookies</h3>
+                            <p>Cookies crocantes por fora e macios por dentro.</p>
+                        </div>
+                        <span class="product-category">Cookies</span>
+                    </div>
+                </article>
+                <article class="product-card" data-category="Bebidas">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=85"
+                            alt="Sweet Coffee">
+                    </div>
+                    <div class="product-info">
+                        <div>
+                            <h3>Sweet Coffee</h3>
+                            <p>Café cremoso para acompanhar seu doce favorito.</p>
+                        </div>
+                        <span class="product-category">Bebidas</span>
+                    </div>
+                </article>
+                <p class="empty-message" id="emptyMessage">
+                    Nenhum produto encontrado nesta categoria ♡
+                </p>
+            </div>
+        </section>
+        <section class="closing">
+            <span class="eyebrow">A LITTLE MORE SWEETNESS</span>
+            <h2>Life is better with dessert.</h2>
+            <p>Bonita demais pra dividir.</p>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h3>SweetRewind ♡</h3>
+                <p>Um pedacinho de nostalgia, uma fatia de felicidade.</p>
+                <p>Kisses, crumbs & cherry lips.</p>
+            </div>
+            <div>
+                <h4>EXPLORE</h4>
+                <a href="index.html">Início</a>
+                <a href="produtos.html">Produtos</a>
+                <a href="sobre.html">Sobre nós</a>
+            </div>
+            <div>
+                <h4>MINHA CONTA</h4>
+                <a href="perfil.html">Meu perfil</a>
+                <a href="pedidos.html">Meus pedidos</a>
+                <a href="configuracoes.html">Configurações</a>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2026 SweetRewind. Todos os direitos reservados.
+        </div>
+    </footer>
+    <script>
+        const categoryButtons = document.querySelectorAll('.category-button');
+        const productCards = document.querySelectorAll('.product-card');
+        const emptyMessage = document.getElementById('emptyMessage');
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const selectedCategory = button.dataset.category;
+                let visibleProducts = 0;
+                categoryButtons.forEach(item => {
+                    item.classList.remove('active');
+                });
+                button.classList.add('active');
+                productCards.forEach(card => {
+                    const productCategory = card.dataset.category;
+                    const shouldShow =
+                        selectedCategory === 'Todos' ||
+                        productCategory === selectedCategory;
+                    card.hidden = !shouldShow;
+                    if (shouldShow) {
+                        visibleProducts++;
+                    }
+                });
+                emptyMessage.style.display =
+                    visibleProducts === 0 ? 'block' : 'none';
+            });
+        });
+    </script>
 </body>
+
 </html>
