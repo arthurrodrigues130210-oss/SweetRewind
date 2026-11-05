@@ -132,6 +132,123 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 
 <body>
+    <!-- Botões da Navbar -->
+    <div class="collapse" id="navbarToggleExternalContent">
+
+        <div class="p-4" style="background-color: #f7f5f1;">
+
+            <h5 class="h4" style="color: #ff8eb4;">
+                Sweet Rewind
+            </h5>
+
+            <span style="color: #f7a0b8;">
+                Um pedacinho de nostalgia, uma fatia de felicidade 𖹭
+            </span>
+
+
+            <br><br>
+
+            <div class="tab-content" id="v-pills-tabContent" style="color: #f9bbd0;">
+
+
+
+                <div class="d-flex align-items-start">
+
+
+                    <div class="nav flex-column nav-pills me-3 align-items-start" id="v-pills-tab" role="tablist"
+                        aria-orientation="vertical" style="min-width: 200px;">
+
+                        <a href="index.html">
+                            <button class="nav-link active w-100 text-start" id="v-pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                                aria-selected="true" style="background-color: #f9bbd0; color: #f7f5f1;">
+                                Início
+                            </button></a>
+                        <br>
+
+                        <a href="cadastro.php">
+                            <button class="nav-link active w-100 text-start" id="v-pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                                aria-selected="true" style="background-color: #f9bbd0; color: #f7f5f1;">
+                                Perfil
+                            </button></a>
+                        <br>
+
+                        <a href="produtos.html">
+                            <button class="nav-link active w-100 text-start" id="v-pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                                aria-selected="true" style="background-color: #f9bbd0; color: #f7f5f1;">
+                                Produtos
+                            </button></a>
+                        <br>
+
+                        <a href="pedidos.html">
+                            <button class="nav-link active w-100 text-start" id="v-pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                                aria-selected="true" style="background-color: #f9bbd0; color: #f7f5f1;">
+                                Pedidos
+                            </button></a>
+                        <br>
+
+                        <a href="sobre_nós.html">
+                            <button class="nav-link active w-100 text-start" id="v-pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                                aria-selected="true" style="background-color: #f9bbd0; color: #f7f5f1;">
+                                Sobre Nós
+                            </button></a>
+                        <br>
+
+                        <a href="painel.php">
+                            <button class="nav-link active w-100 text-start" id="v-pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                                aria-selected="true" style="background-color: #f9bbd0; color: #f7f5f1;">
+                                Configurações
+                            </button></a>
+                        <br>
+
+                    </div>
+
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                        aria-labelledby="v-pills-profile-tab" tabindex="0">
+                        Conheça nossos produtos doces.
+                    </div>
+
+                    <div class="tab-pane fade" id="v-pills-disabled" role="tabpanel"
+                        aria-labelledby="v-pills-disabled-tab" tabindex="0">
+                        Seus pedidos aparecerão aqui.
+                    </div>
+
+                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                        aria-labelledby="v-pills-messages-tab" tabindex="0">
+                        Consulte seu perfil.
+                    </div>
+
+                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
+                        aria-labelledby="v-pills-settings-tab" tabindex="0">
+                        Personalize suas preferências.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- Navbar -->
+    <nav class="navbar" style="background-color: #f7f5f1;">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Abrir menu" style="border-color: #ff8eb4;">
+
+                <span class="navbar-toggler-icon"
+                    style="filter: brightness(0) saturate(100%) invert(9%) sepia(98%) saturate(5094%) hue-rotate(4deg) brightness(83%) contrast(113%);">
+                </span>
+
+            </button>
+        </div>
+    </nav>
+
     <div class="container">
         <h1>Sweet Rewind</h1>
         <p>Crie sua conta e faça parte da nossa confeitaria!</p>

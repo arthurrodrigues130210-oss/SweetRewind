@@ -77,8 +77,8 @@ function h($valor)
 </head>
 
 <body>
-    <nav class="navbar bg-success navbar-dark">
-        <div class="container"><span class="navbar-brand">VerdeViva | Administração</span>
+    <nav class="navbar navbar-dark" style="background-color: #ff8eb4;">
+        <div class="container"><span class="navbar-brand"> Sweet Rewind | Administração</span>
             <form action="logout.php" method="POST"><button class="btn btn-outline-light">Sair</button></form>
         </div>
     </nav>
