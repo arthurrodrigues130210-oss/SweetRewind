@@ -29,7 +29,7 @@ $erro = isset($_GET["erro"]);
         <div class="card shadow-sm w-100"
             style="max-width: 420px;">
             <div class="card-body p-4">
-                <h2 class="text-success mb-3">
+                <h2 class="mb-3" style="color: #ff6abc;">
                     Acesso Administrativo
                 </h2>
 
@@ -57,7 +57,8 @@ $erro = isset($_GET["erro"]);
                             <!-- Botão Entrar -->
                             <button
                                 type="submit"
-                                class="btn btn-success w-100">
+                                class="btn w-100 text-white"
+                                style="background-color: #ff5aa7; border-color: #faf8fa;">
                                 Entrar
                             </button>
                         </form>
